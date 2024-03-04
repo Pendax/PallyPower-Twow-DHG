@@ -263,7 +263,7 @@ function PallyPower_UpdateUI()
   if not initalized then PallyPower_ScanSpells() end
   -- Buff Bar
   PallyPowerBuffBar:SetScale(PP_PerUser.scalebar);
-  if ((GetNumRaidMembers() == 0 and GetNumPartyMembers() == 0) or (not PP_IsPally )) then
+  if (not PP_IsPally ) then
     PallyPowerBuffBar:Hide()
   else
     PallyPowerBuffBar:Show()
@@ -682,10 +682,6 @@ function PallyPower_NeedsBuff(class, test)
   if PP_PerUser.smartbuffs then
     -- no wisdom for warriors and rogues
     if (class == 0 or class==1) and test == 0 then 
-      return false 
-    end
-    -- no salv for warriors
-    if class == 0 and test == 2 then 
       return false 
     end
     -- no might for casters
